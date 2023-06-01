@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "tolaaa-zone"
-  }
+    "default": "tolaaa-zone",
+    "y": "tolaaa-zone"
+  },
+  "targets": {},
+  "etags": {}
 }
