@@ -4,6 +4,7 @@ import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faMediumM, faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import introCard from '../assets/intro-card.png'
 import Projects from './Project';
+import Works from './Works';
 
 export default function Intro() {
   return (
@@ -33,6 +34,7 @@ export default function Intro() {
       </div>
 
       <Projects />
+      <Works/>
       
     </div>
   );

@@ -76,7 +76,7 @@ function App() {
                 </a>
               </li> */}
 
-              <li><button className="resume-button">resume</button></li>
+              <li><a href="https://read.cv/tolaaa" target="_blank" rel="noopener noreferrer" ><button  className="resume-button">resume</button></a></li>
             </ul>
           </div>
         </nav>

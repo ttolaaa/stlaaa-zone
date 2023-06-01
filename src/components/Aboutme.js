@@ -12,7 +12,7 @@ export default function Aboutme() {
                 {/* <p> Hello</p> */}
                 <h4>A little bit about me -- </h4>
                 <p className='paragraph-about'>Nice to meet you! My name is Tola.</p>
-                <p className='paragraph-about'>I was born in Phnom Penh, Cambodia 🇰🇭, my childhood was spent in a cozy small town 🏘️, and more recently, I embarked on my educational journey in Computer Science at the awe-inspiring Kirirom National Park ⛰️, perched majestically on a magnificent mountain in Cambodia. This was made possible through my enrollment with full scholarship at the first most esteemed boarding school <b>Kirirom Institute of Technology (KIT)</b> in Cambodia.</p>
+                <p className='paragraph-about'>I was born in Phnom Penh, Cambodia 🇰🇭, my childhood was spent in a cozy small town 🏘️, and more recently, I embarked on my educational journey in Computer Science at the awe-inspiring Kirirom National Park ⛰️, perched majestically on a magnificent mountain in Cambodia. This was made possible through my enrollment with full scholarship at the first most esteemed boarding school <b><a href="https://kit.edu.kh/" target="_blank" rel="noopener noreferrer" >Kirirom Institute of Technology (KIT)</a></b> in Cambodia.</p>
                 <p className='paragraph-about'>Currently, I'm employed as a system developer and programming instructor at a cram school in Tokyo, Japan 🇯🇵. In this role, I am responsible for creating web applications that enable students to reserve lessons online. Additionally, I develop mobile applications designed to enhance students' English vocabulary, aiding them in achieving proficiency in the Eiken test and I also provide scratch programming lesson to Japanese kids.</p>
                 <p className='paragraph-about'>My curiosity drives me to acquire various skill sets ranging from graphic design, UX/UI, coding, and product delivery. Additionally, I find joy in reading and writing, having published a few books, including a scratch programming book available on Amazon Kindle. I have also wrote several series of articles related to lesson.</p>
                 <a href="https://medium.com/@somtola/coding-for-kids-its-fun-being-kids-coding-instructor-88413aa714ff" target="_blank" rel="noopener noreferrer">🔗 <b>CODING FOR KIDS:</b> it’s fun being kids Coding Instructor. </a>
@@ -50,6 +50,9 @@ export default function Aboutme() {
                     As a female coder, I am passionate about promoting diversity and inclusivity in the tech industry. I believe that everyone, regardless of their background or gender, should have the opportunity to pursue a career in technology. In Cambodia, I actively support initiatives that encourage more women to embrace coding and STEM fields.
                     Thank you for taking the time to learn a bit about me. If you'd like to connect or learn more about my work, feel free to reach out to me. Let's continue coding and making a difference together!
                 </p> */}
+                <br></br>
+                <br></br>
+                <br></br>
             </div>
 
         </div>

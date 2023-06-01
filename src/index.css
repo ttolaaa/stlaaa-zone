@@ -253,13 +253,13 @@ body {
 }
 
 .button-1-work{
-  font-weight: bold;
+ 
   border-radius: 10px;
-  background-color: #F2E0FF;
+  background-color: #e4dabb;
   padding: 10px 20px;
   font-size: 14px;
   border: 0px solid #F2E0FF;
-  color: #682B8F;
+  color: #303008;
   margin-right: 10px;
 }
 .button-1-work button {
