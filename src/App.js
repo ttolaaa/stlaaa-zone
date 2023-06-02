@@ -14,7 +14,6 @@ function App() {
     setActiveNavItem(navItem);
   }
   return (
-    <Router>
     <div>
       <nav className="nav">
         <div>
@@ -46,7 +45,6 @@ function App() {
         <Route path="/about" element={<Aboutme />} />
       </Routes>
     </div>
-    </Router>
   );
 }
 
