@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Intro from './components/Intro';
 import Aboutme from './components/Aboutme';
 import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
+// import ProjectSample from './components/Project-sample';
 
 
 function App() {
   useEffect(() => {
-    document.title = 'tola';
+    document.title = 'Tolaaa';
   }, []);
 
   const [activeNavItem, setActiveNavItem] = useState('');
@@ -43,6 +44,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />} />
         <Route path="/about" element={<Aboutme />} />
+        {/* <Route path="/project-sample" element={<ProjectSample />} /> */}
       </Routes>
     </div>
   );
