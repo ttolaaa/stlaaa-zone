@@ -4,10 +4,17 @@ import gliwebsite from '../assets/gliwebsite.png';
 import mobileapp from '../assets/mobileapp.gif';
 import webgif from '../assets/web.gif';
 import onlinegliweb from '../assets/onlinegliweb.gif'
+import {useNavigate} from 'react-router-dom';
 
 
 
 export default function Projects() {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/project-sample');
+    };
+
     return (
         <div className="project">
             <div className="vertical-project-colum-1">
