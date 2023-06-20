@@ -44,7 +44,6 @@ body {
   color: #25615F; 
   margin-right: 5%;
   margin-left: 5%;
-  
 }
 .nav a{
   color: #25615F;
@@ -604,6 +603,93 @@ body {
     margin: 0 20px; /* Adjust margins for smaller screens */
   }
   .img-about {
+    width: 100%; /* Make the image occupy the full width of its container */
+    margin: 0; /* Remove any margins for smaller screens */
+  }
+}
+
+
+
+.project-mobile {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; 
+}
+
+.project-mobile h4,p,a{
+  font-size: 14px;
+  font-family: 'PT Sans';
+}
+
+.image-project-mobile,
+.text-project-mobile {
+  flex-grow: 1;
+}
+
+/* <div/> class for img */
+.image-project-mobile {
+  order: 1;
+}
+
+/* <img/> class for img */
+.img-project-mobile {
+  width: 400px;
+  height: auto;
+  margin-left: 100px;
+  margin-right: 75px;
+}
+
+.text-project-mobile {
+  order: 2;
+  margin-top: 50px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.text-project-mobile a {
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  text-decoration: none;
+  color: #25615F;
+  font-size: 14px;
+}
+
+.text-project-mobile ul {
+  gap: 1rem;
+  list-style: none;
+  color: #25615F;
+  font-size: 14px;
+  margin-left: -40px;
+}
+
+.paragraph-project-mobile {
+  color: #25615F;
+  text-align: justify;
+  text-orientation: upright;
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  
+}
+
+@media screen and (max-width: 768px) {
+  .project-mobile {
+    flex-direction: column;
+    height: auto; /* Remove the fixed height for smaller screens */
+  }
+  .image-project-mobile {
+    order: 1; /* Set the order to 1 for smaller screens */
+    margin-left: 0; /* Remove the left margin for smaller screens */
+    margin-bottom: 20px; /* Add some spacing between image and text for smaller screens */
+  }
+  .text-project-mobile {
+    order: 2; /* Set the order to 2 for smaller screens */
+    margin: 0 20px; /* Adjust margins for smaller screens */
+  }
+  .img-project-mobile{
     width: 100%; /* Make the image occupy the full width of its container */
     margin: 0; /* Remove any margins for smaller screens */
   }

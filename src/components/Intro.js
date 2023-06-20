@@ -5,10 +5,10 @@ import { faMediumM, faLinkedin, faGithub, faInstagram } from '@fortawesome/free-
 import introCard from '../assets/intro-card.png'
 import Projects from './Project';
 import Works from './Works';
+import PersonalProject from './Personal-projects';
 
 export default function Intro() {
   return (
-
     <div>
       <div className='intro'>
         <div className="image-intro">
@@ -27,13 +27,12 @@ export default function Intro() {
             <a href='https://www.instagram.com/cornsaladddd21/' target='_blank' rel='noopener noreferrer' >
               <FontAwesomeIcon icon={faInstagram} className="social-icon-white" />
             </a>
-
           </ul>
         </div>
-
       </div>
-
+      
       <Projects />
+      <PersonalProject/>
       <Works/>
       
     </div>
