@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Intro from './components/Intro';
 import Aboutme from './components/Aboutme';
 import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
-// import ProjectSample from './components/Project-sample';
+import EikenCaseStudy from './components/EikenCaseStudy'
 
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />} />
         <Route path="/about" element={<Aboutme />} />
-        {/* <Route path="/project-sample" element={<ProjectSample />} /> */}
+        <Route path="/eiken-app-case-study" element={<EikenCaseStudy />} />
       </Routes>
     </div>
   );

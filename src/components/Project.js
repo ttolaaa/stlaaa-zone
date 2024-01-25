@@ -12,12 +12,12 @@ export default function Projects() {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/project-sample');
+        navigate('/eiken-app-case-study');
     };
 
     return (
         <div className="project">
-            <div className="vertical-project-colum-1">
+            <div className="vertical-project-colum-1" onClick={handleClick}>
                 <div className="horizontal-project">
                     <img src={mobileapp} alt="Image 1" />
                     <h5>Eiken Vocabulary Enhancement App</h5>

@@ -23,6 +23,32 @@
   }
 }
 
+/* for eiken */
+.column-img-eiken{
+  width: 200px;
+}
+.not-bold {
+  font-weight: normal;
+}
+.eiken {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.line {
+  border-style: dashed;
+  border: none;
+  border-top: 1px solid #0b8480; /* Set the color of the line */
+  margin: 10px 0; /* Optional: Add margin for spacing around the line */
+}
+/* for eiken */
 
 
 body {
@@ -88,7 +114,7 @@ body {
 
 .intro {
   display: flex;
-  margin-bottom: 5%;
+  margin-bottom: 1%;
 }
 /* <div/> class for img */
 .image-intro{
@@ -98,12 +124,13 @@ body {
 .img-intro{
   width: 100%;
   height: auto;
-  margin-left: 10px;
+  margin-left: 0;
+  margin-right: 0;
 }
 .text-intro{
-  order: 2;
-  margin-right: 5%;
-  margin-left: 5%;
+  /* order: 2; */
+  margin-right: 0;
+  margin-left: 4%;
 }
 
 .paragraph-intro {
@@ -645,6 +672,14 @@ body {
   margin-right: 5%;
   margin-left: 5%;
 }
+.column-img-eiken{
+  order: 1;
+  margin-top: 60px;
+  width: 80%;
+  height: auto;
+  
+}
+
 
 .text-project-mobile a {
   list-style: none;
@@ -654,6 +689,7 @@ body {
   color: #25615F;
   font-size: 14px;
 }
+
 
 .text-project-mobile ul {
   gap: 1rem;
