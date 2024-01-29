@@ -1,11 +1,13 @@
-import React from "react"
-import firebaseimage from '../assets/firebase-project.png';
-import gliwebsite from '../assets/gliwebsite.png';
-import adminwebsite from '../assets/adminweb.gif';
-import glowtracker from '../assets/glowtracker.gif'
+// EikenCaseStudyPB.js
+import React from "react";
 
-export default function PersonalProject() {
-    return (
-        <div> </div>
-    )
-}
+const EikenCaseStudyPB = () => {
+  return (
+    <div className="eiken-pb">
+      {/* Add your content here */}
+      <h1>hello</h1>
+    </div>
+  );
+};
+
+export default EikenCaseStudyPB;

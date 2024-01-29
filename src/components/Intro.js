@@ -202,7 +202,7 @@ export default function Intro() {
               <FontAwesomeIcon icon={faYoutube} className="social-icon-white" />
             </a>
           </ul> */}
-          <p className="paragraph-intro">
+          {/* <p className="paragraph-intro">
             FYI, I'm not a YouTuber; I moved to Japan 2 years ago 🇰🇭 → 🇯🇵 and in
             my videos you will find me sharing my early career stories in tech
             and navigating through life in my 20s. I just made the youtube channel for
@@ -211,7 +211,7 @@ export default function Intro() {
             maximize the experience at the world-best women in technology
             conference, the <b>Grace Hopper Celebration</b>, where I
             participated in the 2019 in Orlando, Florida, USA.
-          </p>
+          </p> */}
         </div>
       </div>
 

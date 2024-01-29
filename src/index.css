@@ -20,27 +20,55 @@
   }
   .text-intro {
     order: 2; /* Set the order to 2 for smaller screens */
+    margin:2%;
   }
+
+  .eiken{
+    flex-direction: column;
+  }
+  .eiken-text-column{
+    order: 2;
+  }
+  .eiken-img-column{
+    order: 1;
+  }
+  .column-img-eiken{
+    margin: 0;
+    align-items: center;}
+    
 }
 
 /* for eiken */
-.column-img-eiken{
-  width: 200px;
-}
+
 .not-bold {
   font-weight: normal;
 }
+
 .eiken {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.column {
+.eiken-text-column {
+  order: 1;
   flex: 1;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
+  box-sizing: border-box; /* Ensure padding is included in the total width */
 }
+
+.eiken-img-column {
+  order: 2;
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box; /* Ensure padding is included in the total width */
+}
+
+.column-img-eiken {
+  width: 80%;
+  height: auto;
+  margin: 4%;
+}
+
 
 .line {
   border-style: dashed;
@@ -48,7 +76,7 @@
   border-top: 1px solid #0b8480; /* Set the color of the line */
   margin: 10px 0; /* Optional: Add margin for spacing around the line */
 }
-/* for eiken */
+
 
 
 body {
@@ -129,8 +157,8 @@ body {
 }
 .text-intro{
   /* order: 2; */
-  margin-right: 0;
-  margin-left: 4%;
+  margin-right: 4%;
+  margin-left: 5%;
 }
 
 .paragraph-intro {
@@ -413,7 +441,8 @@ body {
 }
 
 .horizontal-project img {
-  width: 500px;
+  width: 100%;
+  /* width: 500px; */
   height: auto;
   max-width: 200%; 
   outline-offset: -5px; 
@@ -525,6 +554,8 @@ body {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     
   }
 
@@ -542,7 +573,7 @@ body {
   }
 
   .horizontal-project img {
-    max-width: 500px;
+    /* max-width: 500px; */
     margin-bottom: 0px;
     max-width: 100%; 
   }
@@ -671,13 +702,6 @@ body {
   margin-top: 50px;
   margin-right: 5%;
   margin-left: 5%;
-}
-.column-img-eiken{
-  order: 1;
-  margin-top: 60px;
-  width: 80%;
-  height: auto;
-  
 }
 
 
