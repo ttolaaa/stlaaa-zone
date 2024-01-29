@@ -13,7 +13,7 @@ const EikenCaseStudy = () => {
             <h3>Eiken Vocabulary Enhancement Mobile Application </h3>
             <h4>Summary</h4>
             <p>
-              <b>Eiken Mobile Application</b> The Eiken Mobile App is a tailored
+              <b>Eiken Mobile Application</b> is a
               solution for Japanese elementary students, offering quizzes,
               flashcards, and listening exercises aligned with Eiken test
               levels. Designed to enhance language proficiency, it helps
@@ -22,10 +22,7 @@ const EikenCaseStudy = () => {
             </p>
             <p className="paragraph-project-mobile">
               <b>EIKEN</b> is an abbreviation of <b>Jitsuyo Eigo Gino Kentei</b>{" "}
-              (Test in Practical English Proficiency), one of the most widely
-              used English-language testing programs in <b>Japan</b>. It is
-              offered at 7 levels: Grade 1, Grade Pre-1, Grade 2, Grade Pre-2,
-              Grade 3, Grade 4, and Grade 5.
+              (Test in Practical English Proficiency).
             </p>
 
             <p>
