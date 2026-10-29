@@ -2,6 +2,31 @@
 
 For the website's before-and-after story, see the [portfolio showcase](README.md).
 
+## Live site: Firebase Hosting
+
+The live site is **https://tolaaa-zone.web.app**. Every push to `main` runs [`.github/workflows/firebase-deploy.yml`](.github/workflows/firebase-deploy.yml): install → build → desktop/mobile browser tests → deploy `dist/` to the Firebase project `tolaaa-zone`. A failed build or test leaves the live site unchanged.
+
+It uses the repository secret `FIREBASE_SERVICE_ACCOUNT_TOLAAA_ZONE`, created by the original Firebase setup. If it's missing or expired, recreate it from your machine:
+
+```powershell
+npm.cmd install -g firebase-tools
+firebase login
+firebase init hosting:github
+```
+
+Choose the `tolaaa-zone` project and the `ttolaaa/stlaaa-zone` repository. When asked, keep the existing `firebase.json` and **decline** the generated workflows; this project already includes one.
+
+Manual deploy from your machine:
+
+```powershell
+npm.cmd run build
+firebase deploy --only hosting
+```
+
+[`firebase.json`](firebase.json) supplies SPA routing, security headers, long-lived caching for hashed assets, and `no-cache` for the service worker, manifest, and `index.html`, so open tabs pick up each release automatically.
+
+The Docker/SSH deployment below is an optional alternative and now runs **manually only** from the Actions tab, until you configure a server.
+
 A redesigned, responsive portfolio and installable progressive web app. Built with React, Vite, and Workbox, served as static files by an unprivileged Nginx container.
 
 ## What is included
@@ -68,7 +93,7 @@ Docker was unavailable in the implementation environment. Build and runtime conf
 
 ## Automatic deployment on Git push
 
-The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) deploys pushes to **main**, plus manual runs from the GitHub Actions tab. A local commit must be **pushed** before the server can receive it. This folder has not been initialized as a Git repository or connected to a remote; automation is prepared but not active until the setup below is complete.
+The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) is currently **manual-only** (Actions → Run workflow), because Firebase serves the live site. After completing the setup below, add `push: branches: [main]` back to its `on:` block for automatic Docker deployments. A local commit must be **pushed** before the server can receive it.
 
 ### One-time setup
 

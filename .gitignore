@@ -4,5 +4,6 @@ playwright-report/
 test-results/
 .env
 .DS_Store
+.firebase/
 image.tar.gz
 image.tar.gz.sha256

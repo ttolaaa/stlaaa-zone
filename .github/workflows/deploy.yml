@@ -1,8 +1,8 @@
-name: Test and deploy portfolio
+name: Test and deploy portfolio to Docker server
 
+# Manual until a Docker server and its SSH secrets are configured.
+# Add `push: branches: [main]` back to deploy on every push.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
