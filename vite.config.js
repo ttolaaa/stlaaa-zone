@@ -10,9 +10,9 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'icons/*.png', 'images/*', 'fonts/*'],
       manifest: {
         id: '/',
-        name: 'Tola Som — Built for impact',
+        name: 'Tola Som — From code to cloud',
         short_name: 'Tola',
-        description: 'Infrastructure, automation, and thoughtful digital tools by Tola Som.',
+        description: 'Six years in IT: software engineering to Microsoft datacenter infrastructure.',
         theme_color: '#f5f5ef',
         background_color: '#f5f5ef',
         display: 'standalone',

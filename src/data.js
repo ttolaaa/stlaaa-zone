@@ -6,12 +6,53 @@ export const links = {
 };
 
 export const profile = {
-  name: 'Tola Som',
+  name: 'Tola',
   role: 'Data Center Technician',
   company: 'Microsoft',
   location: 'Tokyo, Japan',
   since: 'May 2024',
 };
+
+export const journey = [
+  { dates: '2020 – 2024', title: 'System Developer → product lead', detail: 'Customer-facing apps, stakeholders, delivery' },
+  { dates: '2024 – Now', title: 'Microsoft Japan · deployment lead', detail: 'Deploy, maintain, and retire datacenter hardware', current: true },
+  { dates: 'Next', title: 'Program management', detail: 'Delivering impact at a larger scale', next: true },
+];
+
+export const infrastructureWork = [
+  {
+    id: 'new-capacity',
+    stage: 'DEPLOY',
+    title: 'New datacenter capacity',
+    short: 'Racks, servers, and network gear: installed, tested, handed over.',
+    highlight: { value: '30 days', label: 'early site handover' },
+    role: 'Led a new capacity build',
+  },
+  {
+    id: 'ai-gpu',
+    stage: 'DEPLOY · AI',
+    title: 'AI GPU deployments',
+    short: 'Racks of GPU servers that train and run AI.',
+    highlight: { value: '27 days', label: 'early AMD MI300X delivery' },
+    role: 'Led AMD MI300X & NVIDIA H200',
+  },
+  {
+    id: 'breakfix',
+    stage: 'MAINTAIN',
+    title: 'Breakfix maintenance',
+    short: 'Finding faults and fixing servers and network devices fast.',
+    highlight: { value: 'L1–L3', label: 'server & network troubleshooting' },
+    role: 'Breakfix Level III validated',
+  },
+  {
+    id: 'decommission',
+    stage: 'RETIRE',
+    title: 'End-of-life decommission',
+    short: 'Retiring old racks, servers, and network devices safely.',
+    highlight: { value: 'Zero', label: 'security incidents' },
+    role: 'Racks · servers · network · HSM',
+  },
+];
 
 export const career = [
   {
@@ -20,14 +61,14 @@ export const career = [
     dates: 'May 2024 - Present',
     location: 'Tokyo, Japan · On-site',
     current: true,
-    summary: 'Building deployment readiness through reliable infrastructure, automation, and hands-on technical leadership.',
+    summary: 'Deployment lead for large infrastructure programs: coordinating engineering, logistics, security, and operations teams while managing risks, schedules, and customer commitments.',
     achievements: [
-      'Leading an APAC AI infrastructure deployment, establishing standards and operational practices for future expansion.',
-      'Led AMD MI300X deployment and co-led NVIDIA H200 GPU initiatives, combining deployment planning with cable-mapping automation.',
-      'Delivered secure Azure infrastructure decommissioning with zero security incidents and SLA compliance.',
-      'Automated operational workflows to improve visibility, standardize processes, and accelerate replacement-part fulfillment.',
+      "Leading APAC's first AI PoP deployment, establishing standards and practices for future regional expansion.",
+      'Led a large AMD MI300X GPU program and co-led NVIDIA H200 deployments, including cable-mapping automation.',
+      'Delivered Azure rack, network device, and HSM decommissioning with zero security incidents and full SLA compliance.',
+      'Mentor new technicians and deployment leads, and serve as a technical escalation point during critical deployments.',
     ],
-    skills: ['Deployment planning', 'OSI L1/L2/L3 troubleshooting', 'Process automation', 'Technical mentoring'],
+    skills: ['Deployment leadership', 'Infrastructure lifecycle', 'Risk & schedule management', 'Automation', 'Mentoring'],
   },
   {
     title: 'System Engineer',
@@ -35,20 +76,14 @@ export const career = [
     dates: 'Dec 2020 - May 2024',
     location: 'Tokyo, Japan · Hybrid',
     current: false,
-    summary: 'Led the design, development, and delivery of a customer-facing online education platform.',
+    summary: 'Software engineering and product leadership: designing and delivering a customer-facing online education platform.',
     achievements: [
-      'Partnered with stakeholders, designers, and developers to deliver product features and timely releases.',
+      'Translated business requirements into technical solutions with stakeholders, product owners, and development teams.',
       'Improved organic traffic by 15%, reduced API response times by 20%, and improved application load times by 30%.',
       'Mentored and onboarded 3+ developers and designers, supporting new technologies and development practices.',
     ],
-    skills: ['Web applications', 'Product delivery', 'Performance optimization', 'Cross-functional leadership'],
+    skills: ['Software engineering', 'Product leadership', 'Stakeholder management', 'Project delivery'],
   },
-];
-
-export const careerImpact = [
-  { value: '27 days', label: 'ahead of go-live', detail: 'AMD MI300X infrastructure delivery' },
-  { value: '90%', label: 'less preparation effort', detail: 'Day-1 Zero Trust network automation' },
-  { value: '60%', label: 'less preparation effort', detail: 'GPU cable-mapping automation' },
 ];
 
 export const certifications = [

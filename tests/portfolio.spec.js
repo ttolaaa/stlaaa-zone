@@ -7,7 +7,7 @@ test('renders original work and all three new projects without page errors', asy
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Made with care.');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('built for impact.');
   for (const name of ['VDODL', 'Clipping', 'Storyteller']) {
     await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
   }
@@ -22,19 +22,30 @@ test('renders original work and all three new projects without page errors', asy
   expect(errors).toEqual([]);
 });
 
-test('shows current LinkedIn experience, impact, and all six certifications', async ({ page }) => {
+test('introduces six years in IT, infrastructure work, ITIL, and current experience', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.hero-description')).toContainText('Tola Som. Data Center Technician at Microsoft.');
-  await expect(page).toHaveTitle('Tola Som — Made with care. Built for impact.');
+  await expect(page).toHaveTitle('Tola Som — built for impact. from code to cloud.');
+  await expect(page.locator('.hero-description')).toContainText('3.5 years as a system developer');
+  await expect(page.locator('.hero-description')).toContainText('Microsoft Japan');
+  const glance = page.getByRole('region', { name: 'Career at a glance' });
+  await expect(glance).toContainText('6+');
+  await expect(glance).toContainText('Program management');
+  await expect(glance).toContainText('ITIL® 4 Foundation');
+  const impact = page.getByRole('region', { name: 'Real infrastructure. Explained simply.' });
+  for (const name of ['New datacenter capacity', 'AI GPU deployments', 'Breakfix maintenance', 'End-of-life decommission']) {
+    await expect(impact.getByRole('heading', { name, exact: true })).toBeVisible();
+  }
+  await expect(impact.getByText('Led AMD MI300X & NVIDIA H200')).toBeVisible();
+  await expect(impact.locator('.impact-highlight')).toHaveCount(4);
+  await page.getByRole('link', { name: 'See what I do' }).click();
+  await expect(impact).toBeInViewport();
   const careerSection = page.getByRole('region', { name: 'From interfaces to infrastructure.' });
   await expect(careerSection.getByRole('heading', { name: 'Data Center Technician', exact: true })).toBeVisible();
   await expect(careerSection.getByText('May 2024 - Present', { exact: true })).toBeVisible();
   await expect(careerSection.getByRole('heading', { name: 'System Engineer', exact: true })).toBeVisible();
   await expect(careerSection.getByText('Dec 2020 - May 2024', { exact: true })).toBeVisible();
-  await expect(careerSection.locator('.impact-card')).toHaveCount(3);
   await expect(careerSection.locator('.certifications li')).toHaveCount(6);
   await expect(careerSection.getByRole('heading', { name: 'ITIL® 4 Foundation', exact: true })).toBeVisible();
-  await expect(careerSection.getByText('IT Service Management · Expires Jul 2029')).toBeVisible();
   await expect(page.locator('body')).not.toContainText('GR671898055TS');
 });
 
@@ -64,7 +75,7 @@ test('filters projects, keeps previews interactive, and opens an accessible proj
   await expect(page.locator('.experience-card')).toHaveCount(0);
 });
 
-test('theme persists, archive expands, and installation state updates', async ({ page }) => {
+test('theme persists, archive expands, and footer has no install button', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' });
   await page.goto('/');
   await page.getByRole('button', { name: 'Switch to dark theme' }).click();
@@ -73,8 +84,7 @@ test('theme persists, archive expands, and installation state updates', async ({
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.locator('.archive summary').click();
   await expect(page.getByRole('heading', { name: 'GlowTracker' })).toBeVisible();
-  await page.evaluate(() => window.dispatchEvent(new Event('appinstalled')));
-  await expect(page.getByText('Installed & ready to explore')).toBeVisible();
+  await expect(page.locator('footer')).not.toContainText('Install');
 });
 
 test('voice preview uses speech synthesis and can be stopped', async ({ page }) => {
@@ -139,7 +149,7 @@ test('preserves previous about and Eiken case study entry points', async ({ page
   await expect(page.getByRole('heading', { name: 'Eiken Vocabulary App', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Close project' }).click();
   await page.goto('/about');
-  await expect(page.getByRole('heading', { name: 'Curiosity is the common thread.' })).toBeInViewport();
+  await expect(page.getByRole('heading', { name: 'Software, product, and infrastructure.' })).toBeInViewport();
 });
 
 test('activates new service workers and reloads without an update button', async ({ page }) => {
@@ -177,7 +187,7 @@ test('activates new service workers and reloads without an update button', async
     const reloaded = page.waitForEvent('load');
     await page.evaluate(() => window.dispatchEvent(new Event('focus')));
     await reloaded;
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Made with care.');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('built for impact.');
     await expect(page.getByRole('button', { name: 'Update', exact: true })).toHaveCount(0);
   } finally {
     server.closeAllConnections();
