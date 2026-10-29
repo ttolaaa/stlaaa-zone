@@ -1,0 +1,104 @@
+name: Test and deploy portfolio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Browser tests
+        run: |
+          npx playwright install --with-deps chromium
+          npm test
+      - name: Validate deployment scripts
+        run: |
+          bash -n deploy/deploy.sh
+          bash tests/deploy.test.sh
+      - name: Build deployment image
+        run: |
+          docker build --label "org.opencontainers.image.revision=$GITHUB_SHA" -t "tola-portfolio:$GITHUB_SHA" .
+      - name: Smoke test production container
+        env:
+          PORTFOLIO_PORT: '18080'
+        run: |
+          set -euo pipefail
+          export PORTFOLIO_IMAGE="tola-portfolio:$GITHUB_SHA"
+          cleanup() {
+            result=$?
+            if [ "$result" -ne 0 ]; then
+              docker compose -p portfolio-ci -f compose.production.yaml logs --tail 80
+            fi
+            docker compose -p portfolio-ci -f compose.production.yaml down
+            exit "$result"
+          }
+          trap cleanup EXIT
+          docker compose -p portfolio-ci -f compose.production.yaml up -d --wait --wait-timeout 120
+          curl --fail --silent http://127.0.0.1:18080/health
+          curl --fail --silent http://127.0.0.1:18080/ | grep -q '<title>Tola Som'
+      - name: Package verified image
+        run: |
+          docker save "tola-portfolio:$GITHUB_SHA" | gzip > image.tar.gz
+          sha256sum image.tar.gz > image.tar.gz.sha256
+      - name: Configure SSH
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_SSH_PORT: ${{ vars.DEPLOY_SSH_PORT || '22' }}
+        run: |
+          set -euo pipefail
+          : "${DEPLOY_HOST:?Set DEPLOY_HOST in the production environment}"
+          : "${DEPLOY_USER:?Set DEPLOY_USER in the production environment}"
+          : "${DEPLOY_SSH_KEY:?Set DEPLOY_SSH_KEY in the production environment}"
+          : "${DEPLOY_KNOWN_HOSTS:?Set verified DEPLOY_KNOWN_HOSTS in the production environment}"
+          [[ "$DEPLOY_HOST" =~ ^[a-zA-Z0-9.:-]+$ ]] || { echo "Invalid host"; exit 1; }
+          [[ "$DEPLOY_USER" =~ ^[a-zA-Z_][a-zA-Z0-9_-]*$ ]] || { echo "Invalid SSH user"; exit 1; }
+          [[ "$DEPLOY_SSH_PORT" =~ ^[0-9]+$ ]] && (( 10#$DEPLOY_SSH_PORT > 0 && 10#$DEPLOY_SSH_PORT <= 65535 )) || { echo "Invalid SSH port"; exit 1; }
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host portfolio-production
+            HostName $DEPLOY_HOST
+            User $DEPLOY_USER
+            Port $DEPLOY_SSH_PORT
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+            BatchMode yes
+            StrictHostKeyChecking yes
+          EOF
+      - name: Upload and deploy
+        env:
+          PORTFOLIO_PORT: ${{ vars.PORTFOLIO_PORT || '8080' }}
+        run: |
+          set -euo pipefail
+          [[ "$PORTFOLIO_PORT" =~ ^[0-9]+$ ]] && (( 10#$PORTFOLIO_PORT > 0 && 10#$PORTFOLIO_PORT <= 65535 )) || { echo "Invalid portfolio port"; exit 1; }
+          ssh portfolio-production "mkdir -p ~/tola-portfolio/incoming/$GITHUB_SHA"
+          scp image.tar.gz image.tar.gz.sha256 compose.production.yaml deploy/deploy.sh "portfolio-production:tola-portfolio/incoming/$GITHUB_SHA/"
+          ssh portfolio-production "bash ~/tola-portfolio/incoming/$GITHUB_SHA/deploy.sh '$GITHUB_SHA' '$PORTFOLIO_PORT'"
+      - name: Remove runner SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.env
+.vscode
+test-results
+playwright-report
+tests
+.github
+deploy
+image.tar.gz
+image.tar.gz.sha256
