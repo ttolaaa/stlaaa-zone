@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "icons": "node scripts/generate-icons.mjs",
+    "og-image": "node scripts/generate-og-image.mjs",
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
