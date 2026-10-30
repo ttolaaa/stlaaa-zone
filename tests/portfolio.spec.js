@@ -24,7 +24,7 @@ test('renders original work and all three new projects without page errors', asy
 
 test('introduces six years in IT, infrastructure work, ITIL, and current experience', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle('Tola Som — built for impact. from code to cloud.');
+  await expect(page).toHaveTitle('Tola Som — Microsoft CO+I DC Technician · built for impact, from code to cloud');
   await expect(page.locator('.hero-description')).toContainText('3.5 years as a system developer');
   await expect(page.locator('.hero-description')).toContainText('Microsoft Japan');
   const glance = page.getByRole('region', { name: 'Career at a glance' });
